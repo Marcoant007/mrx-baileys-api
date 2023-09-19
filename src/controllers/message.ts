@@ -1,6 +1,6 @@
 import type { proto, WAGenericMediaMessage, WAMessage } from '@adiwajshing/baileys';
 import { downloadMediaMessage } from '@adiwajshing/baileys';
-import { serializePrisma } from '@ookamiiixd/baileys-store';
+import { serializePrisma } from 'mrx-baileys-store';
 import type { RequestHandler } from 'express';
 import { logger, prisma } from '../shared';
 import { delay as delayMs } from '../utils';
@@ -52,7 +52,7 @@ export const send: RequestHandler = async (req, res) => {
 
 export const sendBulk: RequestHandler = async (req, res) => {
   const session = getSession(req.params.sessionId)!;
-  const results: { index: number; result: proto.WebMessageInfo | undefined }[] = [];
+  const results: { index: number; result: any }[] = [];
   const errors: { index: number; error: string }[] = [];
 
   for (const [
@@ -81,25 +81,25 @@ export const sendBulk: RequestHandler = async (req, res) => {
     .json({ results, errors });
 };
 
-export const download: RequestHandler = async (req, res) => {
-  try {
-    const session = getSession(req.params.sessionId)!;
-    const message = req.body as WAMessage;
-    const type = Object.keys(message.message!)[0] as keyof proto.IMessage;
-    const content = message.message![type] as WAGenericMediaMessage;
-    const buffer = await downloadMediaMessage(
-      message,
-      'buffer',
-      {},
-      { logger, reuploadRequest: session.updateMediaMessage }
-    );
+// export const download: RequestHandler = async (req, res) => {
+//   try {
+//     const session = getSession(req.params.sessionId)!;
+//     const message = req.body as WAMessage;
+//     const type = Object.keys(message.message!)[0] as keyof proto.IMessage;
+//     const content = message.message![type] as WAGenericMediaMessage;
+//     const buffer = await downloadMediaMessage(
+//       message,
+//       'buffer',
+//       {},
+//       { logger, reuploadRequest: session.updateMediaMessage }
+//     );
 
-    res.setHeader('Content-Type', content.mimetype!);
-    res.write(buffer);
-    res.end();
-  } catch (e) {
-    const message = 'An error occured during message media download';
-    logger.error(e, message);
-    res.status(500).json({ error: message });
-  }
-};
+//     res.setHeader('Content-Type', content.mimetype!);
+//     res.write(buffer);
+//     res.end();
+//   } catch (e) {
+//     const message = 'An error occured during message media download';
+//     logger.error(e, message);
+//     res.status(500).json({ error: message });
+//   }
+// };
