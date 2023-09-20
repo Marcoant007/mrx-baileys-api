@@ -52,7 +52,7 @@ export const send: RequestHandler = async (req, res) => {
 
 export const sendBulk: RequestHandler = async (req, res) => {
   const session = getSession(req.params.sessionId)!;
-  const results: { index: number; result: any }[] = [];
+  const results: { index: number; result: proto.WebMessageInfo | undefined }[] = [];
   const errors: { index: number; error: string }[] = [];
 
   for (const [
