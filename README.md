@@ -1,10 +1,10 @@
-> 🚨 **NOTICE**: `@adiwajshing/baileys` which is this project relied on, has been discontinued. Thus, this project will be archived and stopped receiving updates anymore. 
+> 🚨 **NOTICE**: `@whiskeysockets/baileys` which is this project relied on, has been discontinued. Thus, this project will be archived and stopped receiving updates anymore. 
 **However, with the new version of Wiskey Socket, I chose to continue maintaining the project**.
 
 
 # Baileys API
 
-An implementation of [@adiwajshing/Baileys](https://github.com/adiwajshing/Baileys) as a simple REST API with multiple device support
+An implementation of [@whiskeysockets/baileys](https://github.com/adiwajshing/Baileys) as a simple REST API with multiple device support
 
 And being updated and updated by Marco Antônio
 

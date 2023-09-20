@@ -15,6 +15,6 @@ const port = Number(process.env.PORT || 3000);
 const listener = () => console.log(`Server is listening on http://${host}:${port} 🚀`);
 
 (async () => {
-  // await init(); //CONFIGURE SEU BANCO DE DADOS ANTES...
+  await init(); //CONFIGURE SEU BANCO DE DADOS ANTES...
   app.listen(port, host, listener);
 })();

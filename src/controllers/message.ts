@@ -1,5 +1,5 @@
-import type { proto, WAGenericMediaMessage, WAMessage } from '@adiwajshing/baileys';
-import { downloadMediaMessage } from '@adiwajshing/baileys';
+import type { proto, WAGenericMediaMessage, WAMessage } from '@whiskeysockets/baileys';
+import { downloadMediaMessage } from '@whiskeysockets/baileys';
 import { serializePrisma } from 'mrx-baileys-store';
 import type { RequestHandler } from 'express';
 import { logger, prisma } from '../shared';
